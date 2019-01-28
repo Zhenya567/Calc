@@ -4,7 +4,6 @@
 #include  "iviewmodel.h"
 #include "viewmodel.h"
 #include <QLabel>
-#include <QMessageBox>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -21,11 +20,16 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_8,SIGNAL(clicked()),this,SLOT(onNumberclicked(double number)));
     connect(ui->pushButton_9,SIGNAL(clicked()),this,SLOT(onNumberclicked(double number)));
 
+    connect(ui->pushButton_minus,SIGNAL(clicked()),this,SLOT(onOperationclicked(QString operation)));
+    connect(ui->pushButton_plus,SIGNAL(clicked()),this,SLOT(onOperationclicked(QString operation)));
+    connect(ui->pushButton_devide,SIGNAL(clicked()),this,SLOT(onOperationclicked(QString operation)));
+    connect(ui->pushButton_mult,SIGNAL(clicked()),this,SLOT(onOperationclicked(QString operation)));
 
-    // Подключаем сигнал с передачей номера кнопки к слоту вывода сообщения*/
-    QObject::connect(this,&ViewModel::setText1,this,&MainWindow::onSetTextLabel);
+    connect(ui->pushButton_equal,SIGNAL(clicked()),this,SLOT(onEqclicked()));
 
-
+    /* Подключаем сигнал с передачей номера кнопки к слоту вывода сообщения*/
+    //connect(&viewModel, &ViewModel::setText1, this, &MainWindow::onSetTextLabel);
+    QObject::connect(&viewModel,&ViewModel::setText1,this,&MainWindow::onSetTextLabel);
 
 
   //connect(setггText,SIGNAL(clicked()),this,SLOT(onNumberclicked(double number)));
@@ -50,15 +54,20 @@ void MainWindow::onSetTextLabel(QString text){
     ui->label->setText(text);
 }
 
-void MainWindow::onNumberclicked(double num){
-  viewModel.onNumberSelected1();
-  emit setText1(QString::number(num));
+void MainWindow::onNumberclicked(double number){
+   viewModel.onNumberSelected1();
+   emit viewModel.setText1(QString::number(number));
+
   }
 void MainWindow::onOperationclicked(QString operation){
     viewModel.onOperationSelected1();
+    emit viewModel.setText1(operation);
+
 }
 void MainWindow::onEqclicked(){
     viewModel.onEqSelected1();
+    emit viewModel.setText1("");
+
 }
 
 

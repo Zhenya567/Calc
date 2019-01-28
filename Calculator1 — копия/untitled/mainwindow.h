@@ -7,7 +7,7 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow,public ViewModel
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
@@ -17,10 +17,12 @@ public:
     QObject*  getsender() { return sender();}
 private:
     Ui::MainWindow *ui;
-    ViewModel viewModel;
+    ViewModel viewModel,viewModel1;
+
     //QObject* obj = sender();
+
 private slots:
-    void onNumberclicked(double num);
+    void onNumberclicked(double number);
     void onOperationclicked(QString operation);
     void onEqclicked();
 

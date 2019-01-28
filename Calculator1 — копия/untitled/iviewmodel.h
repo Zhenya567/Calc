@@ -11,7 +11,7 @@ class IViewModelDelegate;
 class IViewModel
 {
      struct State{virtual void response() = 0;};
-     struct onNumberSelected:public State{ void response(double num);};
+     struct onNumberSelected:public State{ void response(double number);};
      struct onOperationSelected:public State{void response(QString operation);};
      struct onEqSelected:public State {void response();};
 public:

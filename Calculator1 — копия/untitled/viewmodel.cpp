@@ -5,15 +5,15 @@
 {
 
 }*/
-void ViewModel::onNumberSelected::response(double num){
+void ViewModel::onNumberSelected::response(double number){
     MainWindow numbers;//чтобы получить доступ к sender
     QPushButton *button=(QPushButton *) numbers.getsender();//для проверки на какое число ввел пользователь
         if(button->text()=="+" || button->text()=="-" || button->text()=="/" || button->text()=="*"){
-            second=num;
+            second=number;
             //second=(button->text().toDouble());
         }
         else if(!(button->text()=="+" || button->text()=="-" || button->text()=="/" || button->text()=="*")){
-            first=num;
+            first=number;
             //first=(button->text().toDouble());
         }
 }
