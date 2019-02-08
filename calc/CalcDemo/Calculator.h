@@ -21,7 +21,8 @@ public:
     void setOperation(char operation);
 
     QString calculate();
-
+    void clear();
+    void backspace();
     QList<char> availibleOperations();
 
 

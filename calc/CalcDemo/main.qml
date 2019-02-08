@@ -17,6 +17,7 @@ Window {
     Column {
         id: contentColumn
 
+
         /*Label {
             id: textLabel
 
@@ -75,6 +76,33 @@ Window {
                 model: viewModel.operations()
             }
         }
+        Button {
+            text: "AC"
+            onClicked: viewModel.clear()
+
+        }
+        Label {
+           text: qsTr("Plus Minus,Dot,%,")
+
+        }
+        Button {
+            text: "+/-"
+            onClicked: viewModel.plus_minus()
+
+        }
+        Button {
+            text: "%"
+            onClicked: viewModel.percent()
+        }
+        Button {
+            text: "."
+            onClicked: viewModel.dot()
+        }
+        Button {
+            text: "Backspace"
+            onClicked: viewModel.backspace()
+        }
     }
-}
+    }
+
 

@@ -2,7 +2,7 @@
 #include <QMap>
 
 double add(double val1, double val2) {
-    return val1 + val2;
+    return val1+val2;
 }
 double remove(double val1, double val2) {
     return val1 - val2;
@@ -53,7 +53,14 @@ void Calculator::setOperation(char operation)
 {
     m_operation = operation;
 }
+void Calculator::clear(){
+    m_operation=' ';
 
+}
+void Calculator::backspace(){
+    Calculator a;
+    a.firstValue();
+}
 QString Calculator::calculate()
 {
     return QString::number(

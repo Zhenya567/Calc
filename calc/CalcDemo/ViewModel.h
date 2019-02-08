@@ -18,6 +18,11 @@ private:
         virtual void onNumberSelected(QString numberChar) = 0;
         virtual void onOperationSelected(QString operationChar) = 0;
         virtual void onEqSelected() = 0;
+        virtual void clear()=0;
+        virtual void plus_minus()=0;
+        virtual void percent()=0;
+        virtual void dot()=0;
+        virtual void backspace()=0;
         virtual QString formatLabel() = 0;
 
         ViewModel *parent() const;
@@ -34,13 +39,17 @@ public:
     Q_INVOKABLE void onNumberSelected(QString numberChar);
     Q_INVOKABLE void onOperationSelected(QString operationChar);
     Q_INVOKABLE void onEqSelected();
-
+     Q_INVOKABLE void clear();
+   Q_INVOKABLE void plus_minus();
+    Q_INVOKABLE void percent();
+    Q_INVOKABLE void dot();
+    Q_INVOKABLE void backspace();
     State::Ptr state() const;
     void setState(const State::Ptr &state);
 
     Calculator &calculator();
     void sendUpdateLabel(QString label);
-
+    //void sendUpdateLabel(QString label);
     Q_INVOKABLE QStringList operations();
 signals:
     void updateLabel(QString labelText);
@@ -58,10 +67,17 @@ private:
         void onNumberSelected(QString numberChar);
         void onOperationSelected(QString operationChar);
         void onEqSelected();
+        void clear();
+        void plus_minus();
+        void percent();
+        void dot();
+        void backspace();
         QString formatLabel();
 
     private:
         QString m_firstValueBuffer;
+
+
     };
 
     class InputSecondNumberState: public State
@@ -71,9 +87,17 @@ private:
         void onNumberSelected(QString numberChar);
         void onOperationSelected(QString operationChar);
         void onEqSelected();
+        void clear();
+        void plus_minus();
+        void percent();
+        void dot();
+        void backspace();
+
         QString formatLabel();
     private:
         QString m_secondValueBuffer;
+
+
     };
 
     class PrintResultState: public State
@@ -83,6 +107,11 @@ private:
         void onNumberSelected(QString numberChar);
         void onOperationSelected(QString operationChar);
         void onEqSelected();
+        void clear();
+        void plus_minus();
+        void percent();
+        void dot();
+        void backspace();
         QString formatLabel();
     };
 };
